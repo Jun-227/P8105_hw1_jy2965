@@ -14,7 +14,7 @@ The chunk below creates a dataframe containing a random sample of size 8 from a 
 library(tidyverse)
 set.seed(1)
 problem1_df = tibble(
-  vec_numeric = runif(8),
+  vec_numeric = rnorm(8),
   vec_logical = vec_numeric>0,
   vec_char = c("My", "name", "is", "Jun","trying","to","get","eight"),
   vec_factor = factor(c("chocolate", "chocolate", "cookie", "cookie","cookie","cake","cake","cake"))
@@ -23,7 +23,19 @@ class(problem1_df$vec_numeric)
 class(problem1_df$vec_logical)
 class(problem1_df$vec_char)
 class(problem1_df$vec_factor)
+levels(problem1_df$vec_factor)
+
+
+mean(problem1_df$vec_numeric)
+mean(problem1_df$vec_logical)
+mean(problem1_df$vec_char)
+mean(problem1_df$vec_factor)
+
 ```
+Result: I could get the mean of numeric and logical variables, but I can not get the mean of character and factor variables.
+
+Explanation: Because the numeric variable is a set of numbers, it is easy to calculate the mean of it. As for logical variables, the system recognizes TRUE as 1 and FALSE as 0, so it can calculate the mean of a set of number 1 and 0.
+However, sice character and factor variables are sets of words instead of numbers, the system cannot calculate the means of them.
 
 ## R Markdown
 

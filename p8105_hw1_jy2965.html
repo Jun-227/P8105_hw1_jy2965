@@ -385,7 +385,7 @@ summary {
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>set.seed(1)
 problem1_df = tibble(
-  vec_numeric = runif(8),
+  vec_numeric = rnorm(8),
   vec_logical = vec_numeric&gt;0,
   vec_char = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Jun&quot;,&quot;trying&quot;,&quot;to&quot;,&quot;get&quot;,&quot;eight&quot;),
   vec_factor = factor(c(&quot;chocolate&quot;, &quot;chocolate&quot;, &quot;cookie&quot;, &quot;cookie&quot;,&quot;cookie&quot;,&quot;cake&quot;,&quot;cake&quot;,&quot;cake&quot;))
@@ -398,6 +398,22 @@ class(problem1_df$vec_numeric)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <pre class="r"><code>class(problem1_df$vec_factor)</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>levels(problem1_df$vec_factor)</code></pre>
+<pre><code>## [1] &quot;cake&quot;      &quot;chocolate&quot; &quot;cookie&quot;</code></pre>
+<pre class="r"><code>mean(problem1_df$vec_numeric)</code></pre>
+<pre><code>## [1] 0.1314544</code></pre>
+<pre class="r"><code>mean(problem1_df$vec_logical)</code></pre>
+<pre><code>## [1] 0.625</code></pre>
+<pre class="r"><code>mean(problem1_df$vec_char)</code></pre>
+<pre><code>## Warning in mean.default(problem1_df$vec_char): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>mean(problem1_df$vec_factor)</code></pre>
+<pre><code>## Warning in mean.default(problem1_df$vec_factor): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Result: I could get the mean of numeric and logical variables, but I can not get the mean of character and factor variables.</p>
+<p>Explanation: Because the numeric variable is a set of numbers, it is easy to calculate the mean of it. As for logical variables, the system recognizes TRUE as 1 and FALSE as 0, so it can calculate the mean of a set of number 1 and 0. However, sice character and factor variables are sets of words instead of numbers, the system cannot calculate the means of them.</p>
 </div>
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
