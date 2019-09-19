@@ -1,0 +1,46 @@
+---
+title: "p8105_hw1_jy2965"
+author: "Jun Yin"
+date: 2019-09-19
+output: html_document
+---
+##Problem 1
+
+## Create a data frame
+The chunk below creates a dataframe containing a random sample of size 8 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 8 and a factor vector of length 8, with 3 different factor "levels".
+
+
+```{r homework_problem_1_dataframe}
+library(tidyverse)
+set.seed(1)
+problem1_df = tibble(
+  vec_numeric = runif(8),
+  vec_logical = vec_numeric>0,
+  vec_char = c("My", "name", "is", "Jun","trying","to","get","eight"),
+  vec_factor = factor(c("chocolate", "chocolate", "cookie", "cookie","cookie","cake","cake","cake"))
+)
+class(problem1_df$vec_numeric)
+class(problem1_df$vec_logical)
+class(problem1_df$vec_char)
+class(problem1_df$vec_factor)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
