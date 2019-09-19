@@ -73,4 +73,25 @@ problem2_df = tibble(
   vec2_factor = as.factor(vec2_logical) 
 )
 ```
+## inline R code
+As the data frame shows above, *the number of the rows of the dataset* is `r nrow(problem2_df)`, *the number of the column of the dataset* is `r ncol(problem2_df)`; *the mean of x* is `r mean(problem2_df$x)`, *the median of x* is`r median(problem2_df$x)`, *the standard divation of x* is `r sd(problem2_df$x)`; Besides, *the proportion of cases for which x + y > 1* is `r sum(problem2_df$vec2_logical)/length(problem2_df$vec2_logical)`.
 
+##scatterplot
+### scatterplot of y vs x with the color points using the logical variable
+```{r Scatterplot_logical}
+ggplot(problem2_df, aes(x = x, y = y, color = problem2_df$vec2_logical)) + geom_point()
+ggsave("scatterplot_with_color_points_of_logical_variable.png")
+```
+From the scatterplot above, we could find that nearly 50% of the logical variables are true and 50% are false.
+
+### scatterplot of y vs x with the color points using the numeric variable
+```{r Scatterplot_numeric}
+ggplot(problem2_df, aes(x = x, y = y, color = problem2_df$vec2_numeric)) + geom_point()
+```
+From the scatterplot above, we could find that nearly 50% of the numeric variables equal 1 and 50% equal 0.
+
+### scatterplot of y vs x with the color points using the factor variable
+```{r Scatterplot_factor}
+ggplot(problem2_df, aes(x = x, y = y, color = problem2_df$vec2_factor)) + geom_point()
+```
+From the scatterplot above, we could find that nearly 50% of the factor variables are ture and 50% are false.
